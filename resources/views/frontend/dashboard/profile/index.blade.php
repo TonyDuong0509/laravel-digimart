@@ -51,7 +51,7 @@
                                 <i class="ti ti-basket-check"></i>
                                 <span class="text text-heading fw-500">{{ __('Purchased') }}</span>
                             </span>
-                            <span class="profile-info-list__info">0 items</span>
+                            <span class="profile-info-list__info">0 {{ __('items') }}</span>
                         </li>
                     </ul>
 
@@ -65,8 +65,7 @@
                                 <button class="nav-link font-18 font-heading active" id="pills-personalInfo-tab"
                                     data-bs-toggle="pill" data-bs-target="#pills-personalInfo" type="button" role="tab"
                                     aria-controls="pills-personalInfo"
-                                    aria-selected="true">{{ __('Personal
-                                                                            Info') }}</button>
+                                    aria-selected="true">{{ __('Personal Info') }}</button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link font-18 font-heading" id="pills-payouts-tab" data-bs-toggle="pill"
@@ -77,8 +76,7 @@
                                 <button class="nav-link font-18 font-heading" id="pills-changePassword-tab"
                                     data-bs-toggle="pill" data-bs-target="#pills-changePassword" type="button"
                                     role="tab" aria-controls="pills-changePassword"
-                                    aria-selected="false">{{ __('Change
-                                                                            Password') }}</button>
+                                    aria-selected="false">{{ __('Change Password') }}</button>
                             </li>
                         </ul>
                     </div>
@@ -93,40 +91,26 @@
                                     @method('PUT')
                                     <div class="row">
                                         <div class="col-sm-6 col-xs-6">
-                                            <div class="form_box">
-                                                <label for="avatar"
-                                                    class="form-label mb-2 font-18 font-heading fw-600">{{ __('Avatar') }}</label>
-                                                <input type="file" class="common-input border" id="avatar"
-                                                    name="avatar">
-                                                <x-input-error :message="$errors->first('avatar')" />
-                                            </div>
+                                          <x-frontend.input-text type="file" name="avatar" :label="__('Avatar')" />
                                         </div>
                                         <div class="col-sm-6 col-xs-6">
-                                            <x-frontend.input-text label="name" name="name" :value="old('name', $user->name)" placeholder="Full name" />
+                                            <x-frontend.input-text :label="__('Name')" name="name" :value="old('name', $user->name)" :placeholder="__('Full Name')" />
                                         </div>
                                         <div class="col-sm-6 col-xs-6">
-                                            <x-frontend.input-text label="email" name="email" :value="old('email', $user->email)" placeholder="Email" />
+                                            <x-frontend.input-text :label="__('Email')" name="email" :value="old('email', $user->email)" :placeholder="__('Email')" />
                                         </div>
                                         <div class="col-sm-6 col-xs-6">
-                                            <div class="form_box">
-                                                <label for="country"
-                                                    class="form-label mb-2 font-18 font-heading fw-600">{{ __('Country') }}</label>
-                                                <div class="select-has-icon">
-                                                    <select class="common-input border select_2" id="country"
-                                                        name="country">
-                                                        @foreach (config('options.countries') as $key => $value)
-                                                            <option @selected($user->country == $value)
-                                                                value="{{ $value }}">{{ $value }}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                            </div>
+                                            <x-frontend.input-select name="country" :label="__('Country')">
+                                                @foreach (config('options.countries') as $key => $value)
+                                                    <option @selected($user->country == $value) value="{{ $value }}">{{ $value }}</option>
+                                                @endforeach
+                                            </x-frontend.input-select>
                                         </div>
                                         <div class="col-sm-6 col-xs-6">
-                                            <x-frontend.input-text label="city" name="city" :value="old('city', $user->city)" placeholder="City" />
+                                            <x-frontend.input-text :label="__('City')" name="city" :value="old('city', $user->city)" :placeholder="__('City')" />
                                         </div>
                                         <div class="col-sm-6 col-xs-6">
-                                            <x-frontend.input-text label="address" name="address" :value="old('address', $user->address)" placeholder="Address" />
+                                            <x-frontend.input-text :label="__('Address')" name="address" :value="old('address', $user->address)" :placeholder="__('Address')" />
                                         </div>
 
                                         <div class="col-sm-12">
@@ -144,8 +128,7 @@
                                         <div class="col-sm-6 col-xs-6">
                                             <div class="form_box">
                                                 <label for="name"
-                                                    class="form-label mb-2 font-18 font-heading fw-600">Full
-                                                    Name</label>
+                                                    class="form-label mb-2 font-18 font-heading fw-600">{{ __('Full Name') }}</label>
                                                 <input type="text" class="common-input border" id="name"
                                                     value="{{ $user->name }}" placeholder="Full Name">
                                             </div>
@@ -153,13 +136,12 @@
                                         <div class="col-sm-6 col-xs-6">
                                             <div class="form_box">
                                                 <label for="emailAdd"
-                                                    class="form-label mb-2 font-18 font-heading fw-600">Email
-                                                    Address</label>
+                                                    class="form-label mb-2 font-18 font-heading fw-600">{{ __('Email') }}</label>
                                                 <input type="email" class="common-input border" id="emailAdd"
                                                     value="michel15@gmail.com" placeholder="Email Address">
                                             </div>
                                         </div>
-                                        <div class="col-sm-6 col-xs-6">
+                                        {{-- <div class="col-sm-6 col-xs-6">
                                             <div class="form_box">
                                                 <label for="city"
                                                     class="form-label mb-2 font-18 font-heading fw-600">City</label>
@@ -172,9 +154,9 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                         <div class="col-sm-12">
-                                            <button class="btn btn-main btn-lg"> Pay Now</button>
+                                            <button class="btn btn-main btn-lg"> {{ __('Pay Now') }}</button>
                                         </div>
                                     </div>
                                 </form>
@@ -186,53 +168,19 @@
                                     @method('PUT')
                                     <div class="row">
                                         <div class="col-12">
-                                            <div class="form_box">
-                                                <label for="current-password"
-                                                    class="form-label mb-2 font-18 font-heading fw-600">{{ __('Current Password') }}</label>
-                                                <div class="position-relative">
-                                                    <input type="password"
-                                                        class="common-input common-input--withIcon common-input--withLeftIcon "
-                                                        id="current-password" placeholder="************" name="current_password">
-                                                    <span class="input-icon input-icon--left"><img
-                                                            src="{{ asset('assets/frontend/images/icons/key-icon.svg')}}" alt=""></span>
-                                                </div>
-                                                <x-input-error :message="$errors->first('current_password')" />
-                                            </div>
+                                            <x-frontend.input-text type="password" name="current_password" :label="__('Current Password')" placeholder="********" />
                                         </div>
 
                                         <div class="col-sm-6 col-xs-6">
-                                            <div class="form_box">
-                                                <label for="new-password"
-                                                    class="form-label mb-2 font-18 font-heading fw-600">{{ __('New
-                                                    Password') }}</label>
-                                                <div class="position-relative">
-                                                    <input type="password"
-                                                        class="common-input common-input--withIcon common-input--withLeftIcon "
-                                                        id="new-password" placeholder="************" name="password">
-                                                        <span class="input-icon input-icon--left"><img
-                                                            src="{{ asset('assets/frontend/images/icons/key-icon.svg')}}" alt=""></span>
-                                                </div>
-                                                <x-input-error :message="$errors->first('password')" />
-                                            </div>
+                                            <x-frontend.input-text type="password" name="password" :label="__('New Password')" placeholder="********" />
                                         </div>
 
                                         <div class="col-sm-6 col-xs-6">
-                                            <div class="form_box">
-                                                <label for="confirm-password"
-                                                    class="form-label mb-2 font-18 font-heading fw-600">{{ __('Password Confirmation') }}</label>
-                                                <div class="position-relative">
-                                                    <input type="password"
-                                                        class="common-input common-input--withIcon common-input--withLeftIcon "
-                                                        id="confirm-password" placeholder="************" name="password_confirmation">
-                                                        <span class="input-icon input-icon--left"><img
-                                                            src="{{ asset('assets/frontend/images/icons/key-icon.svg')}}" alt=""></span>
-                                                </div>
-                                                <x-input-error :message="$errors->first('password_confirmation')" />
-                                            </div>
+                                            <x-frontend.input-text type="password" name="password_confirmation" :label="__('Password Confirmation')" placeholder="********" />
                                         </div>
 
                                         <div class="col-sm-12">
-                                            <button class="btn btn-main btn-lg">{{ __('Update Password') }}</button>
+                                            <button class="btn btn-main btn-lg">{{ __('Change Password') }}</button>
                                         </div>
                                     </div>
                                 </form>
