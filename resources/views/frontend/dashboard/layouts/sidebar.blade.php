@@ -20,11 +20,11 @@
                 </a>
             </li>
             <li class="sidebar-list__item">
-                <a href="dashboard-profile.html" class="sidebar-list__link">
+                <a href="{{ route('profile') }}" class="sidebar-list__link">
                                 <span class="sidebar-list__icon">
                                     <i class="ti ti-user"></i>
                                 </span>
-                    <span class="text">Profile</span>
+                    <span class="text">{{ __('Profile') }}</span>
                 </a>
             </li>
             <li class="sidebar-list__item">
