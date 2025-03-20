@@ -102,24 +102,10 @@
                                             </div>
                                         </div>
                                         <div class="col-sm-6 col-xs-6">
-                                            <div class="form_box">
-                                                <label for="name"
-                                                    class="form-label mb-2 font-18 font-heading fw-600">{{ __('Full Name') }}</label>
-                                                <input type="text" class="common-input border" id="name"
-                                                    value="{{ old('name', $user->name) }}" placeholder="Full Name"
-                                                    name="name">
-                                                <x-input-error :message="$errors->first('name')" />
-                                            </div>
+                                            <x-frontend.input-text label="name" name="name" :value="old('name', $user->name)" placeholder="Full name" />
                                         </div>
                                         <div class="col-sm-6 col-xs-6">
-                                            <div class="form_box">
-                                                <label for="email"
-                                                    class="form-label mb-2 font-18 font-heading fw-600">{{ __('Email') }}</label>
-                                                <input type="text" class="common-input border" id="email"
-                                                    value="{{ old('email', $user->email) }}" placeholder="Email"
-                                                    name="email">
-                                                <x-input-error :message="$errors->first('email')" />
-                                            </div>
+                                            <x-frontend.input-text label="email" name="email" :value="old('email', $user->email)" placeholder="Email" />
                                         </div>
                                         <div class="col-sm-6 col-xs-6">
                                             <div class="form_box">
@@ -137,22 +123,10 @@
                                             </div>
                                         </div>
                                         <div class="col-sm-6 col-xs-6">
-                                            <div class="form_box">
-                                                <label for="city"
-                                                    class="form-label mb-2 font-18 font-heading fw-600">{{ __('City') }}</label>
-                                                <input type="text" class="common-input border" id="city"
-                                                    name="city" value="{{ old('city', $user->city) }}">
-                                                 <x-input-error :message="$errors->first('city')" />
-                                            </div>
+                                            <x-frontend.input-text label="city" name="city" :value="old('city', $user->city)" placeholder="City" />
                                         </div>
                                         <div class="col-sm-6 col-xs-6">
-                                            <div class="form_box">
-                                                <label for="address"
-                                                    class="form-label mb-2 font-18 font-heading fw-600">{{ __('Address') }}</label>
-                                                <input type="text" class="common-input border" id="address"
-                                                    name="address" value="{{ old('address', $user->address) }}">
-                                                <x-input-error :message="$errors->first('address')" />
-                                            </div>
+                                            <x-frontend.input-text label="address" name="address" :value="old('address', $user->address)" placeholder="Address" />
                                         </div>
 
                                         <div class="col-sm-12">
