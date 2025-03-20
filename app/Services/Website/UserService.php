@@ -35,7 +35,7 @@ class UserService
         {
             $user = $this->userRepository->find($id);
             if (!$user) {
-                throw new \Exception('User not found');
+                throw new \Exception(__('User not found'));
             }
 
             if ($requestFileName && request()->hasFile($requestFileName)) {
@@ -65,12 +65,12 @@ class UserService
         {
             $user = $this->userRepository->find($id);
             if (!$user) {
-                throw new \Exception('User not found');
+                throw new \Exception(__('User not found'));
             }
 
             if(!Hash::check($currentPassword, $user->password))
             {
-                throw new \Exception('Current password is incorrect');
+                throw new \Exception(__('Current password is incorrect'));
             }
 
             $user->password = bcrypt(request('password'));

@@ -5,28 +5,23 @@ use Flasher\Noty\Prime\NotyInterface;
 
 class NotificationService
 {
-    private static $createMessage = 'Created Successfully';
-    private static $updateMessage = 'Updated Successfully';
-    private static $deleteMessage = 'Deleted Successfully';
-    private static $errorMessage = 'Something Went Wrong';
-
     static function CREATED($message = null)
     {
-        noty()->success($message ?? self::$createMessage);
+        noty()->success($message ?? __('Created Successfully'));
     }
 
     static function UPDATED($message = null)
     {
-        noty()->success($message ?? self::$updateMessage);
+        noty()->success($message ?? __('Updated Successfully'));
     }
 
     static function DELETED($message = null)
     {
-        noty()->success($message ?? self::$deleteMessage);
+        noty()->success($message ?? __('Deleted Successfully'));
     }
 
     static function ERROR($message = null)
     {
-        noty()->error($message ?? self::$errorMessage);
+        noty()->error($message ?? __('Something Went Wrong'));
     }
 }

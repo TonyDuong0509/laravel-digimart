@@ -29,7 +29,7 @@ class ProfileController extends Controller
     {
         $user = $this->userService->getAuthUser();
         if (!$user) {
-            NotificationService::ERROR('Pleas login to update profile');
+            NotificationService::ERROR(__('Pleas login to update profile'));
             return redirect()->route('login');
         }
 
@@ -38,7 +38,7 @@ class ProfileController extends Controller
             $data = $request->only(['name', 'email', 'country', 'city', 'address']);
             $requestFileName = 'avatar';
             $this->userService->updateProfile($user->id, $data, $requestFileName);
-            NotificationService::UPDATED('Profile updated successfully');
+            NotificationService::UPDATED(__('Profile updated successfully'));
         }
         catch(\Exception $e)
         {
@@ -57,13 +57,13 @@ class ProfileController extends Controller
     {
         $user = $this->userService->getAuthUser();
         if (!$user) {
-            NotificationService::ERROR('Pleas login to update profile');
+            NotificationService::ERROR(__('Pleas login to update profile'));
             return redirect()->route('login');
         }
 
         try {
             $this->userService->updatePassword($user->id, $request->current_password);
-            NotificationService::UPDATED('Password updated successfully');
+            NotificationService::UPDATED(__('Password updated successfully'));
         } catch (\Exception $e) {
             NotificationService::ERROR($e->getMessage());
         }
